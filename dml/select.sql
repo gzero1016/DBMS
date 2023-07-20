@@ -25,7 +25,9 @@ set
 where
 	student_age = 22;
     
+    
 # 나이가 20살인 학생들의 점수를 전부 더하세요
+# 실행순서 : from -> group by -> select -> having // sum이라는게 붙으면서 as가 달려서 having은 select가 먼저 실행 된 후에 having을 사용할 수 있다.
 select 
 	student_age,
     sum(student_score) as total_score	#java변수명이랑 db컬럼명이 동일해야함
@@ -37,3 +39,21 @@ group by
 	student_age
 having
 	total_score = 40;
+    
+
+# 실행순서 : from -> where -> select가 젤마지막
+select
+	count(*)
+from
+	student_tb
+where
+	student_age = 20;
+    
+    
+select
+	*
+from
+	student_tb
+order by 
+	student_score desc,
+    student_id desc;
