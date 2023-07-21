@@ -11,13 +11,15 @@ where
 # 2. 상품별 총 판매 수량, 판매 총액을 조회하시오.
 select
 	odt.product_id,
+    pt.product_name,
 	sum(odt.count_number) as total_order_count,
-    sum(pt.product_price) as total_product_price
+    sum(pt.product_price * odt.count_number) as total_product_price
 from
 	order_detail_tb odt
     left outer join product_tb pt on(pt.product_id = odt.product_id)
 group by
-	odt.product_id;
+	odt.product_id,
+    pt.product_name;
     
 # 3. 카테고리별 등록된 상품이 몇개씩 등록되어 있는지 조회하시오.
 select
@@ -25,8 +27,8 @@ select
     ct.category_name,
     count(ct.category_name) as total_product_count
 from
-	product_tb pt
-    left outer join category_tb ct on(ct.category_id = pt.category_id)
+	category_tb ct 
+    left outer join product_tb pt on(pt.category_id = ct.category_id)
 group by
 	ct.category_id,
     ct.category_name;
@@ -49,7 +51,9 @@ SELECT
 	sum(odt.count_number) as total_order_count,
     sum(pt.product_price * odt.count_number) as total_order_price
 FROM
-	product_tb pt
-    left outer join order_detail_tb odt on(odt.product_id = pt.product_id)
+	order_detail_tb odt
+    left outer join product_tb pt on(pt.product_id = odt.product_id)
 where
 	pt.product_name like '%나이키%';
+    
+    
