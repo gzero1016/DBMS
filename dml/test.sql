@@ -18,7 +18,6 @@ where
 -- category_id = 2 or category_id = 4;
     category_id in (2,4);
     
-    
 # 상품의 이름이 같은 것이 몇개 있는지 조회
 select
 	product_name,
