@@ -35,3 +35,5 @@ flush privileges;
 
 # 해당 유저에게 어떤 권한이 있는지 조회
 show grants for 'test2'@'%';
+
+select version();

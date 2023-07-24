@@ -1,4 +1,4 @@
-select @@autocommit;	# 자동저장
+select @@autocommit;	# mysql은 자동 on으로 되어있음 (commit : 자동저장)
 set autocommit = 0;   # commit off
 
 # start 부터 commit 까지의 내용만 저장하겠다. (autocommit을 off 했을경우)
