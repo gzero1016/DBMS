@@ -8,6 +8,7 @@ call save_user_many('aaa', '1234', '김준일', null, null, 5);
 # 프로시저안 color에 black을 넣는다. (프로시저안 color는 in이기 때문에 프로시저안에서 값을 바꿔도 내가 집어넣은 black이 유지된다.)
 set @color = 'black';
 set @color_name = 'blue';	# 여기서 blue를 집어넣었지만 프로시저 안에서 color_name이 inout이기때문에 blue가 아니라 프로시저안에서 집어넣은 색상의 이름이 두쪽다 변경될것이다.
+
 call get_product_total_count(@color, @total_count, @color_name);
 select @color, @total_count, @color_name;
 
